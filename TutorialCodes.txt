@@ -1,0 +1,56 @@
+Draggable:
+----------
+
+mousedown = true;
+
+if (mousedown)
+{
+    int mousex = MousePosition.X - 400;
+    int mousey = MousePosition.Y - 20;
+    this.SetDesktopLocation(mousex, mousey);
+}
+
+mousedown = false;
+
+WindowState = FormWindowState.Minimized;
+
+ if (WindowState == FormWindowState.Normal)
+ {}
+     WindowState ^= FormWindowState.Maximized;
+ }
+ else
+ {
+     WindowState = FormWindowState.Normal;
+ }
+
+Editor:
+-------
+
+Application.Exit();
+
+editor.Clear();
+
+Execcute & Inject:
+------------------
+
+if (!ExploitApi.IsClient())
+{
+    return;
+}
+switch (ExploitApi.Inject(Application.StartupPath + "\\bin\\api\\CeleryInject.exe", false, false))
+{
+    case InjectionStatus.SUCCESS:
+        MessageBox.Show("injected");
+        break;
+    case InjectionStatus.ALREADY_INJECTED:
+        MessageBox.Show("already injected");
+        break;
+}
+
+ExploitApi.Execute(editor.Text);
+
+bool mousedown;
+public Form1()
+{
+    InitializeComponent();
+}
